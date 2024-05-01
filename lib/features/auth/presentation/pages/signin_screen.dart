@@ -46,8 +46,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   controller: passwordController,
                   obscureText: true),
               const SizedBox(height: 20),
-              const AuthGradientButton(
+              AuthGradientButton(
                 text: 'Sign In',
+                onTap: () {},
               ),
               const SizedBox(height: 20),
               GestureDetector(
