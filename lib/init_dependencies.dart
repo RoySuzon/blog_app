@@ -23,8 +23,7 @@ void _initAuth() {
       () => AuthRemoteDataSourceImpl(supabaseClient: serviceLocator()));
   serviceLocator.registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(serviceLocator()));
-  serviceLocator
-      .registerFactory(() => UserSignUp(serviceLocator()));
+  serviceLocator.registerFactory(() => UserSignUp(serviceLocator()));
   serviceLocator
       .registerLazySingleton(() => AuthBloc(userSignUp: serviceLocator()));
 }
