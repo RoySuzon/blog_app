@@ -2,7 +2,7 @@
 import 'package:blog_app/core/error/server_exception.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-abstract interface class AuthRemoteSource {
+abstract interface class AuthRemoteDataSource {
   Future<String> signUpWithEmailPassword({
     required String name,
     required String email,
@@ -14,18 +14,11 @@ abstract interface class AuthRemoteSource {
   });
 }
 
-class AuthRemoteSourceImpl implements AuthRemoteSource {
+class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final SupabaseClient supabaseClient;
-  AuthRemoteSourceImpl({
+  AuthRemoteDataSourceImpl({
     required this.supabaseClient,
   });
-  @override
-  Future<String> loginWithEmailPassword({
-    required String email,
-    required String password,
-  }) async {
-    return "";
-  }
 
   @override
   Future<String> signUpWithEmailPassword({
@@ -37,12 +30,18 @@ class AuthRemoteSourceImpl implements AuthRemoteSource {
       final response = await supabaseClient.auth
           .signUp(password: password, email: email, data: {"name": name});
       if (response.user == null) {
-        throw ServerException( "User is null!");
+        throw ServerException("User is null!");
       } else {
         return response.user!.id;
       }
     } catch (e) {
       throw ServerException(e.toString());
     }
+  }
+
+  @override
+  Future<String> loginWithEmailPassword(
+      {required String email, required String password}) {
+    throw UnimplementedError();
   }
 }

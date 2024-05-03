@@ -5,7 +5,7 @@ import 'package:blog_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  final AuthRemoteSource authRemoteSource;
+  final AuthRemoteDataSource authRemoteSource;
   const AuthRepositoryImpl(this.authRemoteSource);
 
   @override
