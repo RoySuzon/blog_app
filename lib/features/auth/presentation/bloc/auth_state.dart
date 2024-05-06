@@ -18,8 +18,8 @@ class AuthFailureState extends AuthState {
 }
 
 class AuthSucessState extends AuthState {
-  final String uid;
+  final User user;
   const AuthSucessState({
-    required this.uid,
+    required this.user,
   });
 }
